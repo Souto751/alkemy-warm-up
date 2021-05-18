@@ -48,6 +48,19 @@ app.patch('/posts/:id', function(req, res){
     });
 });
 
+// Delete Post Endpoint
+app.delete('/posts/:id', function(req, res){
+    Post.destroy({
+        where: {
+            uuid: req.params.id
+        }
+    }).then(result => {
+        res.json(result);
+    }).catch(error => {
+        res.json(error);
+    })
+});
+
 // -- Endpoints End -- //
 
 // Start the App
