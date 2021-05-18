@@ -9,6 +9,13 @@ const PORT = process.env.PORT || 3000;
 
 // -- Endpoints Start -- //
 
+// Get Specific Post by ID
+app.get('/posts/:id', function(req, res){
+    Post.findByPk(req.params.id).then(post => {
+        res.send(post);
+    })
+})
+
 // Create New Post Endpoint
 app.post('/posts', function(req, res){
     Post.create({
