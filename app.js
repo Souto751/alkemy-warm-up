@@ -25,9 +25,29 @@ app.post('/posts', function(req, res){
         category: req.query.category
     }).then(p => {
         res.json(p);
+    }).catch(error => {
+        res.json(error);
     });
-
 });
+
+// Update Post Endpoint
+app.patch('/posts/:id', function(req, res){
+    Post.update({
+        title: req.query.title,
+        contents: req.query.contents,
+        image: req.query.image,
+        category: req.query.category
+    }, {
+        where: {
+            uuid: req.params.id
+        }
+    }).then(result => {
+        res.json(result);
+    }).catch(error => {
+        res.json(error);
+    });
+});
+
 // -- Endpoints End -- //
 
 // Start the App
