@@ -9,10 +9,17 @@ const PORT = process.env.PORT || 3000;
 
 // -- Endpoints Start -- //
 
-// Get Specific Post by ID
+// Get All Posts Endpoint
+app.get('/posts', function(req, res){
+    Post.findAll({attributes: ['title', 'contents', 'image', 'category', 'createdAt']}).then(posts => {
+        res.json(posts);
+    })
+});
+
+// Get Specific Post by ID Endpoint
 app.get('/posts/:id', function(req, res){
     Post.findByPk(req.params.id).then(post => {
-        res.send(post);
+        res.json(post);
     })
 })
 
