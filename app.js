@@ -12,8 +12,7 @@ app.use('/posts', postsRoute);
 
 // Start the App
 app.listen(PORT, function(){
-    console.log('This is the start of the project!');
-
+    
     // connect to the database
     // force: TRUE (DROP TABLE) || FALSE (NO DROP)
     sequelize.sync({ force: false }).then(() => {
