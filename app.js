@@ -19,7 +19,13 @@ app.get('/posts', function(req, res){
 // Get Specific Post by ID Endpoint
 app.get('/posts/:id', function(req, res){
     Post.findByPk(req.params.id).then(post => {
-        res.json(post);
+        if(post == null){
+            res.json({
+                "error": "Error. The post doesn't exist."
+            });
+        }else{
+            res.json(post);
+        }
     })
 })
 
@@ -31,9 +37,9 @@ app.post('/posts', function(req, res){
         image: req.query.image,
         category: req.query.category
     }).then(p => {
-        res.json(p);
-    }).catch(error => {
-        res.json(error);
+        res.json({
+            "success": "The post was created successfully."
+        });
     });
 });
 
@@ -49,10 +55,16 @@ app.patch('/posts/:id', function(req, res){
             uuid: req.params.id
         }
     }).then(result => {
-        res.json(result);
-    }).catch(error => {
-        res.json(error);
-    });
+        if(result == 0){
+            res.json({
+                "error": "Error. The post doesn't exist."
+            })
+        }else{
+            res.json({
+                "success": "The post was updated successfully."
+            });
+        }
+    })
 });
 
 // Delete Post Endpoint
@@ -62,9 +74,15 @@ app.delete('/posts/:id', function(req, res){
             uuid: req.params.id
         }
     }).then(result => {
-        res.json(result);
-    }).catch(error => {
-        res.json(error);
+        if(result == 0){
+            res.json({
+                "error": "Error. The post doesn't exist."
+            })
+        }else{
+            res.json({
+                "success": "The post was deleted successfully."
+            });
+        }
     })
 });
 
