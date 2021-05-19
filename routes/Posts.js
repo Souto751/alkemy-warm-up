@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../database/models/Post');
+const validations = require('../validations/validate-images');
 
 // -- Endpoints Start -- //
 
@@ -26,16 +27,32 @@ router.get('/:id', function(req, res){
 
 // Create New Post Endpoint
 router.post('/', function(req, res){
-    Post.create({
-        title: req.query.title,
-        contents: req.query.contents,
-        image: req.query.image,
-        category: req.query.category
-    }).then(p => {
-        res.json({
-            "success": "The post was created successfully."
+    const imageExists = validations.validate["existance"](req.query.image);
+    const validURL = validations.validate["format"](req.query.image);
+    console.log(imageExists)
+    console.log(validURL)
+    if(validURL && imageExists){
+        Post.create({
+            title: req.query.title,
+            contents: req.query.contents,
+            image: req.query.image,
+            category: req.query.category
+        }).then(() => {
+            res.json({
+                "success": "The post was created successfully."
+            });
         });
-    });
+    }else{
+        if(imageExists && !validURL){
+            res.json({
+                "error": "Error. The image format is invalid."
+            });
+        }else if(!imageExists){
+            res.json({
+                "error": "Error. The image doesn't existe."
+            });
+        }
+    }
 });
 
 // Update Post Endpoint
