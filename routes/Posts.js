@@ -36,7 +36,7 @@ router.post('/', function(req, res){
             title: req.query.title,
             contents: req.query.contents,
             image: req.query.image,
-            category: req.query.category
+            id_category: req.query.id_category
         }).then(() => {
             res.json({
                 "success": "The post was created successfully."

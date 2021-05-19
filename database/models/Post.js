@@ -11,7 +11,10 @@ Post.init({
     title: DataTypes.STRING,
     contents: DataTypes.STRING,
     image: DataTypes.STRING,
-    category: DataTypes.INTEGER
+    id_category: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+    }
 }, {
     sequelize,
     modelName: "post"
