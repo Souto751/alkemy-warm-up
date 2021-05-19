@@ -2,91 +2,13 @@
 const express = require('express');
 const app = express();
 const sequelize = require('./database/database');
-const Post = require('./database/models/Post');
+const postsRoute = require('./routes/Posts');
 
-// port configuration
+// Port configuration
 const PORT = process.env.PORT || 3000;
 
-// -- Endpoints Start -- //
-
-// Get All Posts Endpoint
-app.get('/posts', function(req, res){
-    Post.findAll({attributes: ['title', 'contents', 'image', 'category', 'createdAt']}).then(posts => {
-        res.json(posts);
-    })
-});
-
-// Get Specific Post by ID Endpoint
-app.get('/posts/:id', function(req, res){
-    Post.findByPk(req.params.id).then(post => {
-        if(post == null){
-            res.json({
-                "error": "Error. The post doesn't exist."
-            });
-        }else{
-            res.json(post);
-        }
-    })
-})
-
-// Create New Post Endpoint
-app.post('/posts', function(req, res){
-    Post.create({
-        title: req.query.title,
-        contents: req.query.contents,
-        image: req.query.image,
-        category: req.query.category
-    }).then(p => {
-        res.json({
-            "success": "The post was created successfully."
-        });
-    });
-});
-
-// Update Post Endpoint
-app.patch('/posts/:id', function(req, res){
-    Post.update({
-        title: req.query.title,
-        contents: req.query.contents,
-        image: req.query.image,
-        category: req.query.category
-    }, {
-        where: {
-            uuid: req.params.id
-        }
-    }).then(result => {
-        if(result == 0){
-            res.json({
-                "error": "Error. The post doesn't exist."
-            })
-        }else{
-            res.json({
-                "success": "The post was updated successfully."
-            });
-        }
-    })
-});
-
-// Delete Post Endpoint
-app.delete('/posts/:id', function(req, res){
-    Post.destroy({
-        where: {
-            uuid: req.params.id
-        }
-    }).then(result => {
-        if(result == 0){
-            res.json({
-                "error": "Error. The post doesn't exist."
-            })
-        }else{
-            res.json({
-                "success": "The post was deleted successfully."
-            });
-        }
-    })
-});
-
-// -- Endpoints End -- //
+// Calls Routes from the file Posts.js on the routes folder
+app.use('/posts', postsRoute);
 
 // Start the App
 app.listen(PORT, function(){
