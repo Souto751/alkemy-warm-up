@@ -6,7 +6,7 @@ import './style/Global.css';
 
 // Import Components
 import Home from './components/routes/Home';
-import Post from './components/post/Post';
+import Post from './components/routes/PostPage';
 import Create from './components/routes/AddPost';
 import Update from './components/routes/UpdatePost';
 
