@@ -5,7 +5,7 @@ import React from 'react'
 import '../../style/Create.css';
 
 // Import Variables
-import options from '../../variables/variables';
+import options from '../../variables/categories';
 
 // Export Component
 export default function Create() {
