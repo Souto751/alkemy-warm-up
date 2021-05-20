@@ -36,6 +36,10 @@
     outline: none;
 }
 
+.edit-post:focus{
+    outline: none;
+}
+
 .delete-post{
     border-radius: 50%;
     height: 30px;
@@ -43,6 +47,10 @@
     background-color: #f00;
     cursor: pointer;
     border: none;
+    outline: none;
+}
+
+.delete-post:focus{
     outline: none;
 }
 
@@ -62,4 +70,23 @@
     cursor: pointer;
     border-radius: 5px;
     padding: 5px;
+}
+
+.post-date-category{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.separator{
+    color: #fffaf0;
+}
+
+.post-category-main{
+    color: #fffaf0;
+}
+
+.post-created-at{
+    color: #777;
 }
