@@ -9,7 +9,7 @@ import '../../style/Header.css';
 export default function Header() {
     return (
         <div id="header">
-            <h1>Blog</h1>
+            <h1 className="page-title">Blog</h1>
             <div className="header-links">
                 <Link to="/" style={{ textDecoration: 'none' }}><p className="header-link">Home</p></Link>
                 <Link to="/create" style={{ textDecoration: 'none' }}><p className="header-link">Post</p></Link>
