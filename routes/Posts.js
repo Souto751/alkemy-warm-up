@@ -30,18 +30,19 @@ router.get('/:id', function(req, res){
 router.post('/', function(req, res){
     const imageExists = validations.validate["existance"](req.query.image);
     const validURL = validations.validate["format"](req.query.image);
-    console.log(imageExists)
-    console.log(validURL)
     if(validURL && imageExists){
         Post.create({
             title: req.query.title,
             contents: req.query.contents,
             image: req.query.image,
-            id_category: req.query.id_category
-        }).then(() => {
+            categoryIdCategory: req.query.id_category
+        }).then((response) => {
+            console.log(response)
             res.json({
                 "success": "The post was created successfully."
             });
+        }).catch(error => {
+            console.log(error);
         });
     }else{
         if(imageExists && !validURL){
