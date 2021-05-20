@@ -1,3 +1,6 @@
+// Import Style
+import './style/Global.css';
+
 // Import Components
 import Home from './components/home/Home';
 
