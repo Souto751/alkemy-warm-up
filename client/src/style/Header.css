@@ -1,0 +1,25 @@
+#header{
+    width: 100vw;
+    height: 50px;
+    background-color: #7d7;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.header-links{
+    width: 200px;
+    display: flex;
+    gap: 20px;
+}
+
+.header-link{
+    height: 100%;
+    color: #000;
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
