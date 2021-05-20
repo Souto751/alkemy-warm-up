@@ -6,14 +6,25 @@ Post.init({
     uuid: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV1,
-        primaryKey: true
+        primaryKey: true,
+        allowNull: false,
+        required: true
     },
-    title: DataTypes.STRING,
-    contents: DataTypes.STRING,
-    image: DataTypes.STRING,
-    id_category: {
-        type: DataTypes.INTEGER,
-        defaultValue: 0
+    title: {
+        type: DataTypes.STRING,
+        required: true,
+        allowNull: false,
+        len:[1, 100]
+    },
+    contents: {
+        type: DataTypes.STRING,
+        required: true,
+        allowNull: false
+    },
+    image: {
+        type: DataTypes.STRING,
+        required: true,
+        allowNull: false
     }
 }, {
     sequelize,
