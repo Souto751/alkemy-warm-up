@@ -37,12 +37,12 @@ router.post('/', function(req, res){
             image: req.query.image,
             categoryIdCategory: req.query.id_category
         }).then((response) => {
-            console.log(response)
             res.json({
-                "success": "The post was created successfully."
+                "success": "The post was created successfully.",
+                "post": response
             });
         }).catch(error => {
-            console.log(error);
+            res.json(error);
         });
     }else{
         if(imageExists && !validURL){
