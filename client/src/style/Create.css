@@ -1,5 +1,28 @@
+/* -------------------- */
+/* --- Create Route --- */
+/* -------------------- */
+
 #create{
     width: 100vw;
     min-height: 100vh;
     background-color: #66d;
+}
+
+
+/* ------------------ */
+/* --- Create Form--- */
+/* ------------------ */
+
+#create-form{
+    width: 90vw;
+    max-width: 500px;
+    height: calc(100vh - 70px);
+    margin-top: 10px;
+    min-height: 400px;
+    background-color: #2a2b2c;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
 }

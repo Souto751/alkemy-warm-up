@@ -5,12 +5,14 @@ import React from 'react';
 import '../../style/Create.css';
 
 // Import Components
+import Header from '../header/Header';
 import Create from '../forms/Create';
 
 // Export Component
 export default function AddPost() {
     return (
         <div id="create">
+            <Header />
             <Create />
         </div>
     )
