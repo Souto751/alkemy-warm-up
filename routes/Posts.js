@@ -78,7 +78,7 @@ router.patch('/:id', function(req, res){
                 "success": "The post was updated successfully."
             });
         }
-    })
+    });
 });
 
 // Delete Post Endpoint
