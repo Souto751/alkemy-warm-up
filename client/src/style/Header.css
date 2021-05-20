@@ -1,11 +1,11 @@
 #header{
+    min-width: 100vw;
     width: 100vw;
     height: 50px;
     background-color: #7d7;
     display: flex;
     justify-content: space-between;
     padding-left: 10px;
-    padding-right: 10px;
 }
 
 .header-links{
