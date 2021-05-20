@@ -7,7 +7,7 @@ const validations = require('../validations/validate-images');
 
 // Get All Posts Endpoint
 router.get('/', function(req, res){
-    Post.findAll({attributes: ['title', 'contents', 'image', 'category', 'createdAt']}).then(posts => {
+    Post.findAll({attributes: ['title', 'contents', 'image', 'id_category', 'createdAt']}).then(posts => {
         res.json(posts);
     })
 });
@@ -61,7 +61,7 @@ router.patch('/:id', function(req, res){
         title: req.query.title,
         contents: req.query.contents,
         image: req.query.image,
-        category: req.query.category
+        category: req.query.id_category
     }, {
         where: {
             uuid: req.params.id
