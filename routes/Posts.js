@@ -2,19 +2,20 @@ const express = require('express');
 const router = express.Router();
 const Post = require('../database/models/Post');
 const validations = require('../validations/validate-images');
+const Categories = require('../database/models/Categories');
 
 // -- Endpoints Start -- //
 
 // Get All Posts Endpoint
 router.get('/', function(req, res){
-    Post.findAll({attributes: ['title', 'contents', 'image', 'id_category', 'createdAt']}).then(posts => {
+    Post.findAll({include: {model: Categories, attributes: ['name']}, attributes: ['uuid', 'title', 'image', 'createdAt']}).then(posts => {
         res.json(posts);
     })
 });
 
 // Get Specific Post by ID Endpoint
 router.get('/:id', function(req, res){
-    Post.findByPk(req.params.id).then(post => {
+    Post.findByPk(req.params.id, {include:{model: Categories, attributes: ['name']}, attributes: ['uuid', 'title', 'contents', 'image', 'createdAt']}).then(post => {
         if(post == null){
             res.json({
                 "error": "Error. The post doesn't exist."
