@@ -27,15 +27,16 @@ router.get('/:id', function(req, res){
 })
 
 // Create New Post Endpoint
+// Using Postman I replace the req.body to req.query
 router.post('/', function(req, res){
-    const imageExists = validations.validate["existance"](req.query.image);
-    const validURL = validations.validate["format"](req.query.image);
+    const imageExists = validations.validate["existance"](req.body.image);
+    const validURL = validations.validate["format"](req.body.image);
     if(validURL && imageExists){
         Post.create({
-            title: req.query.title,
-            contents: req.query.contents,
-            image: req.query.image,
-            categoryIdCategory: req.query.id_category
+            title: req.body.title,
+            contents: req.body.contents,
+            image: req.body.image,
+            categoryIdCategory: req.body.id_category
         }).then((response) => {
             res.json({
                 "success": "The post was created successfully.",
@@ -60,10 +61,10 @@ router.post('/', function(req, res){
 // Update Post Endpoint
 router.patch('/:id', function(req, res){
     Post.update({
-        title: req.query.title,
-        contents: req.query.contents,
-        image: req.query.image,
-        category: req.query.id_category
+        title: req.body.title,
+        contents: req.body.contents,
+        image: req.body.image,
+        category: req.body.id_category
     }, {
         where: {
             uuid: req.params.id
