@@ -29,7 +29,7 @@ export default function Update() {
                 <select className="select-category input dropdown" required>
                 {
                     options.map((x ,i=0) => {
-                        return <option key={i} value={x.value ? x.value : ''} disabled={x.label === "Select..." ? true : false} selected={x.label === "Sports" ? true : false}>{x.label}</option>
+                        return <option key={i} value={x.value ? x.value : ''} disabled={x.label === "Select..." ? true : false} defaultValue={x.label === "Sports" ? true : false}>{x.label}</option>
                     })
                 }
                 </select>
