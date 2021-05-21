@@ -15,7 +15,7 @@ function App() {
 
     useEffect(() => {
         const loadPosts = () => {
-            fetch('https://jsonplaceholder.typicode.com/posts')
+            fetch('https://jsonplaceholder.typicode.com/posts', {method: 'GET'})
             .then(response => {return response.json()})
             .then(response => {
                 localStorage.setItem('posts', JSON.stringify(response));
