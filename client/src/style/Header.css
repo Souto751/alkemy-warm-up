@@ -1,0 +1,38 @@
+#header{
+    width: 100vw;
+    height: 50px;
+    background-color: #2a2b2c;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-links{
+    width: 170px;
+    display: flex;
+    gap: 20px;
+}
+
+.header-link{
+    height: 100%;
+    color: #fffaf0;
+    font-size: 25px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.page-title{
+    font-size: 35px;
+    color: #fffaf0;
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 400px){
+    .header-link{
+        font-size: 20px;
+    }
+    .header-links{
+        width: 130px;
+    }
+}

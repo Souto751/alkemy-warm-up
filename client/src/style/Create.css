@@ -1,0 +1,69 @@
+/* -------------------- */
+/* --- Create Route --- */
+/* -------------------- */
+
+#create{
+    width: 100vw;
+    min-height: 100vh;
+    background-color: #66d;
+}
+
+
+/* ------------------ */
+/* --- Create Form--- */
+/* ------------------ */
+
+#create-form{
+    width: 90vw;
+    max-width: 500px;
+    min-height: calc(100vh - 70px);
+    margin-top: 10px;
+    background-color: #2a2b2c;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.input-div{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+    margin-left: auto;
+    gap: 5px;
+}
+
+.input-name{
+    font-size: 20px;
+    color: #fffaf0;
+}
+
+.input{
+    border: none;
+    outline: none;
+    min-height: 35px;
+    font-size: 20px;
+}
+
+.create-button{
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+.dropdown{
+    cursor: pointer;
+}
+
+.content-input{
+    resize: vertical;
+    height: 35px;
+}
+
+.create-post-title{
+    text-align: center;
+    color: #fffaf0;
+}
