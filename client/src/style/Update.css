@@ -54,11 +54,7 @@
     cursor: pointer;
 }
 
-.dropdown{
-    cursor: pointer;
-}
-
-.content-input{
+#content-input{
     resize: vertical;
     min-height: 200px;
 }

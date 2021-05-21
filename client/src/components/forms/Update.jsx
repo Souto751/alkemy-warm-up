@@ -63,7 +63,7 @@ export default function Update() {
             <div className="input-div">
                 <p className="input-name">Content</p>
                 <textarea 
-                    id="content-inputc" 
+                    id="content-input" 
                     lassName="input" 
                     defaultValue={postToUpdate.body} 
                     required 
