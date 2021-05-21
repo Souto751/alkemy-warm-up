@@ -10,16 +10,18 @@ import Post from '../post/Post';
 
 // Export Component
 export default function Home() {
-    
+
+    const posts = JSON.parse(localStorage.getItem('posts'));
+
     return (
         <div id="home">
             <Header />
             <div className="posts-div">
-                <Post />
-                <Post />
-                <Post />
-                <Post />
-                <Post />
+            {
+                posts.map((post, key = 0) => {
+                    return <Post key={key} props={post} />
+                })
+            }
             </div>
         </div>
     )

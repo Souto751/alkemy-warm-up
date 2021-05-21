@@ -1,4 +1,5 @@
 // Import React
+import React, {useEffect} from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 // Import Style
@@ -11,6 +12,19 @@ import Create from './components/routes/AddPost';
 import Update from './components/routes/UpdatePost';
 
 function App() {
+
+    useEffect(() => {
+        const loadPosts = () => {
+            fetch('https://jsonplaceholder.typicode.com/posts')
+            .then(response => {return response.json()})
+            .then(response => {
+                localStorage.setItem('posts', JSON.stringify(response));
+            });
+        }
+
+        loadPosts();
+    }, [])
+
     return (
         <div className="App">
             <Router>
