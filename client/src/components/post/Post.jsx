@@ -11,13 +11,18 @@ import { faLink } from '@fortawesome/free-solid-svg-icons';
 
 // Export Component
 export default function Post(props) {
+
+    const selectId = () => {
+        localStorage.setItem('postId', props.props.id);
+    }
+
     return (
         <div className="post">
             <div>
                 <h3 className="post-title">{props.props.title}</h3>
             </div>
             <div className="post-options">
-                <Link to={"/post/" + props.props.id} style={{ textDecoration: 'none' }}><button className="post-link"><FontAwesomeIcon icon={faLink} /></button></Link>
+                <Link to={"/post/" + props.props.id} style={{ textDecoration: 'none' }}><button className="post-link" onClick={() => selectId()}><FontAwesomeIcon icon={faLink} /></button></Link>
                 <Link to="/update"><button className="edit-post"><FontAwesomeIcon icon={faEdit} color="black" /></button></Link>
                 <button className="delete-post"><FontAwesomeIcon icon={faTrashAlt} color="white" /></button>
             </div>
