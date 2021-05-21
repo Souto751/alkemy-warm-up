@@ -54,13 +54,9 @@
     cursor: pointer;
 }
 
-.dropdown{
-    cursor: pointer;
-}
-
-.content-input{
+#content-input{
     resize: vertical;
-    height: 35px;
+    min-height: 200px;
 }
 
 .create-post-title{
