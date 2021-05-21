@@ -23,7 +23,7 @@ export default function Post(props) {
             </div>
             <div className="post-options">
                 <Link to={"/post/" + props.props.id} style={{ textDecoration: 'none' }}><button className="post-link" onClick={() => selectId()}><FontAwesomeIcon icon={faLink} /></button></Link>
-                <Link to="/update"><button className="edit-post"><FontAwesomeIcon icon={faEdit} color="black" /></button></Link>
+                <Link to="/update"><button className="edit-post" onClick={() => selectId()}><FontAwesomeIcon icon={faEdit} color="black" /></button></Link>
                 <button className="delete-post"><FontAwesomeIcon icon={faTrashAlt} color="white" /></button>
             </div>
         </div>
