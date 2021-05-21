@@ -1,40 +1,63 @@
 // Import React
-import React from 'react'
+import React, { useState } from 'react'
 
 // Import Style
 import '../../style/Create.css';
 
-// Import Variables
-import options from '../../variables/categories';
-
 // Export Component
 export default function Create() {
+
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+
+    const sendPost = (e) => {
+        e.preventDefault();
+        fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            body: JSON.stringify({
+                title: title,
+                body: content,
+                userId: 7
+            }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            }
+        }).then(response => response.json())
+        .then(response => {
+            console.log(response);
+            alert('Post created successfully!');
+        });
+        e.target.reset();
+    }
+
     return (
-        <form id="create-form">
-            <h2 className="create-post-title">Create Post</h2>
-            <div className="input-div">
-                <p className="input-name">Title</p>
-                <input type="text" className="input" placeholder="Enter title..." required />
-            </div>
-            <div className="input-div">
-                <p className="input-name">Content</p>
-                <textarea className="input content-input" placeholder="Write content here..." required />
-            </div>
-            <div className="input-div">
-                <p className="input-name">Image (URL)</p>
-                <input type="text" className="input" placeholder="Enter image URL..." required />
-            </div>
-            <div className="input-div">
-                <p className="input-name">Category</p>
-                <select className="select-category input dropdown" required>
-                {
-                    options.map((x ,i=0) => {
-                        return <option key={i} value={x.value ? x.value : ''} disabled={x.label === "Select..." ? true : false} defaultValue={x.label === "Select..." ? true : false}>{x.label}</option>
-                    })
-                }
-                </select>
-            </div>
-            <button className="create-button btn btn-primary">Post!</button>
-        </form>
+        <div>
+            <form id="create-form" onSubmit={(e) => sendPost(e)} autoComplete="off">
+                <h2 className="create-post-title">Create Post</h2>
+                <div className="input-div">
+                    <p className="input-name">Title</p>
+                    <input 
+                        type="text" 
+                        className="input" 
+                        placeholder="Enter title..." 
+                        required pattern="\S(.*\S)?" 
+                        title="This field is required"
+                        onChange={(e) => {setTitle(e.target.value)}}
+                    />
+                </div>
+                <div className="input-div">
+                    <p className="input-name">Content</p>
+                    <textarea 
+                        id="content-input" 
+                        className="input" 
+                        placeholder="Write content here..." 
+                        required pattern="\S(.*\S)?" 
+                        title="This field is required" 
+                        onChange={(e) => {setContent(e.target.value)}}
+                    />
+                </div>
+                <input type="submit" value="Post" className="create-button btn btn-primary" />
+            </form>
+        </div>
     )
 }
