@@ -60,7 +60,7 @@
 
 .content-input{
     resize: vertical;
-    height: 35px;
+    min-height: 200px;
 }
 
 .update-post-title{
