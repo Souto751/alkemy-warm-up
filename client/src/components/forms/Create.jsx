@@ -31,33 +31,31 @@ export default function Create() {
     }
 
     return (
-        <div>
-            <form id="create-form" onSubmit={(e) => sendPost(e)} autoComplete="off">
-                <h2 className="create-post-title">Create Post</h2>
-                <div className="input-div">
-                    <p className="input-name">Title</p>
-                    <input 
-                        type="text" 
-                        className="input" 
-                        placeholder="Enter title..." 
-                        required pattern="\S(.*\S)?" 
-                        title="This field is required"
-                        onChange={(e) => {setTitle(e.target.value)}}
-                    />
-                </div>
-                <div className="input-div">
-                    <p className="input-name">Content</p>
-                    <textarea 
-                        id="content-input" 
-                        className="input" 
-                        placeholder="Write content here..." 
-                        required pattern="\S(.*\S)?" 
-                        title="This field is required" 
-                        onChange={(e) => {setContent(e.target.value)}}
-                    />
-                </div>
-                <input type="submit" value="Post" className="create-button btn btn-primary" />
-            </form>
-        </div>
+        <form id="create-form" onSubmit={(e) => sendPost(e)} autoComplete="off">
+            <h2 className="create-post-title">Create Post</h2>
+            <div className="input-div">
+                <p className="input-name">Title</p>
+                <input 
+                    type="text" 
+                    className="input" 
+                    placeholder="Enter title..." 
+                    required pattern="\S(.*\S)?" 
+                    title="This field is required"
+                    onChange={(e) => {setTitle(e.target.value)}}
+                />
+            </div>
+            <div className="input-div">
+                <p className="input-name">Content</p>
+                <textarea 
+                    id="content-input" 
+                    className="input" 
+                    placeholder="Write content here..." 
+                    required pattern="\S(.*\S)?" 
+                    title="This field is required" 
+                    onChange={(e) => {setContent(e.target.value)}}
+                />
+            </div>
+            <input type="submit" value="Post" className="create-button btn btn-primary" />
+        </form>
     )
 }
